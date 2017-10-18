@@ -14,16 +14,17 @@ st = miromap[0][0]
 goal = miromap[5][5]
 x=0
 y=0
-me = 'o'
+me = '●'
 
 def mapview(miromap):
 	for line in miromap:
-		print(line)
-	print('\n')
+		for c in line:
+			print(str(c).replace("0", "□").replace("1", "■"), end="")
+		print('')
 
 
 print ("------------------------GAME START----------------------")
-
+mapview(miromap)
 while True:
 	
 	if me==miromap[5][5]:
@@ -59,6 +60,3 @@ while True:
 		print("w/a/s/d choice!!!! OR 벽")
 
 	mapview(miromap)
-
-# print(ord(ch))
-
