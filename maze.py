@@ -2,18 +2,20 @@
 import getch
 
 miromap =  [
-    [2,0,0,0,0,1],
-    [0,1,0,1,1,1],
-    [0,1,1,0,0,1],
-    [0,0,0,1,0,1],
-    [0,1,0,1,0,1],
-    [1,1,0,0,0,3]
+	[1,1,1,1,1,1,1,1],
+    [1,'●',0,0,0,1,0,1],
+    [1,0,1,0,1,1,0,1],
+    [1,0,1,1,0,0,0,1],
+    [1,0,1,0,0,0,1,1],
+    [1,0,0,0,1,0,1,1],
+    [1,0,0,0,1,0,'★',1],
+    [1,1,1,1,1,1,1,1]
 ]
 
-st = miromap[0][0]
-goal = miromap[5][5]
-x=0
-y=0
+st = miromap[1][1]
+goal = miromap[6][6]
+x=1
+y=1
 me = '●'
 
 def mapview(miromap):
@@ -22,36 +24,35 @@ def mapview(miromap):
 			print(str(c).replace("0", "□").replace("1", "■"), end="")
 		print('')
 
-
 print ("------------------------GAME START----------------------")
 mapview(miromap)
 while True:
 	
-	if me==miromap[5][5]:
+	if me==miromap[6][6]:
 		break
 	ch = getch.getch()
 	#w
 	if (ord(ch)==119) and (miromap[x-1][y] != 1):
-		print('w')
+		print('상')
 		x-=1
 		miromap[x][y] = me
 		miromap[x+1][y] = 0
 	#a
 	elif ord(ch)==97 and miromap[x][y-1] != 1:
-		print('a')
+		print('좌')
 		y-=1
 		miromap[x][y] = me
 		miromap[x][y+1] = 0
 
 	#s
 	elif ord(ch)==115 and miromap[x+1][y] != 1:
-		print('s')
+		print('하')
 		x+=1
 		miromap[x][y] = me
 		miromap[x-1][y] = 0
 	#d
 	elif ord(ch)==100 and miromap[x][y+1] != 1:
-		print('d')
+		print('우')
 		y+=1			
 		miromap[x][y] = me
 		miromap[x][y-1] = 0
